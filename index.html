@@ -3,8 +3,8 @@
 
 <head>
   <meta charset="utf-8">
-  <title>Image ID Authentication</title>
-  <meta name="description" content="A prototype for image id verification/authentication using acuant's image processing api.">
+  <title>Image ID Verification</title>
+  <meta name="description" content="A prototype for image id verification using acuant's image processing api.">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <link rel="manifest" href="site.webmanifest">
@@ -38,15 +38,21 @@
             <div class="config__input"><button class="btn btn-primary" name="init" disabled submit>Initialize</button></div>
         </form>
     </div>
-    <div class="app">
+    <div class="hidden app">
         <form class="row app__screen-1">
            <div class="col-sm-6">
-               <div class="app__input"><label>ID Front Image: </label><input type="file" name="id-front" accept=".jpeg, .jpg" /></div>
+               <div class="app__input"><label>ID Front Image: </label><button name="start-camera">Choose file</button></div>
                <div class="app__image-front"><img name="id-front"/></div>
                <div class="app__input"><button class="btn btn-success" name="upload-front-image" disabled submit>Upload</button></div>
            </div>
+           <div class="hidden selfie-group col-sm-6">
+               <div class="app__input"><label>Selfie Image: </label><button name="selfie-camera">Choose file</button></div>
+               <div class="app__image-front"><img name="selfie-image"/></div>
+               <div class="app__input"><button class="btn btn-success" name="verify-selfie-image" disabled submit>Verify</button></div>
+            </div>
         </form>
     </div>
+    <div class="loading">Loading&#8230;</div>
   </div>
 
   <!-- End application content here -->
@@ -54,6 +60,12 @@
   <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
   <script>window.jQuery || document.write('<script src="js/vendor/jquery-3.4.1.min.js"><\/script>')</script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+  <script>
+    const acuantConfig = {
+        path: "/js/vendor/"
+      }
+</script>
+  <script async src="js/vendor/AcuantJavascriptWebSdk.min.js"></script>
   <script src="js/plugins.js"></script>
   <script src="js/main.js"></script>
 
